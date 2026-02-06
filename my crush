@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Hey You 👀</title>
+<style>
+    body {
+        background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+        height: 100vh;
+        margin: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: Arial, sans-serif;
+    }
+
+    .card {
+        background: white;
+        padding: 30px;
+        border-radius: 15px;
+        text-align: center;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        animation: pop 1s ease;
+    }
+
+    h1 {
+        color: #ff4d6d;
+    }
+
+    button {
+        margin-top: 15px;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 20px;
+        background: #ff4d6d;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background: #e63950;
+    }
+
+    @keyframes pop {
+        from { transform: scale(0.8); opacity: 0; }
+        to { transform: scale(1); opacity: 1; }
+    }
+</style>
+</head>
+<body>
+
+<div class="card">
+    <h1>Hey 👋</h1>
+    <p>I just wanted to say…</p>
+    <p><strong>You make my day better 😊</strong></p>
+    <button onclick="alert('Thanks for reading ❤️')">Click me</button>
+</div>
+
+</body>
+</html>
