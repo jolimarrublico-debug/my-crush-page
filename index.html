@@ -4,137 +4,38 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>For You 💖</title>
-
-<style>
-/* ===== RESET ===== */
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family: 'Segoe UI', sans-serif;
-}
-
-/* ===== BODY ===== */
-body{
-  height:100vh;
-  background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
-  color:white;
-  overflow:hidden;
-}
-
-/* ===== SLIDER ===== */
-.slider{
-  display:flex;
-  width:400vw;
-  height:100vh;
-  transition:transform 1s ease-in-out;
-}
-
-.slide{
-  width:100vw;
-  height:100vh;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
-  padding:40px;
-}
-
-.slide h1{
-  font-size:3rem;
-  margin-bottom:15px;
-}
-
-.slide p{
-  font-size:1.3rem;
-  opacity:0.9;
-}
-
-/* ===== HEART ANIMATION ===== */
-.heart{
-  font-size:4rem;
-  animation:beat 1.5s infinite;
-  margin-bottom:20px;
-}
-
-@keyframes beat{
-  0%,100%{transform:scale(1);}
-  50%{transform:scale(1.3);}
-}
-
-/* ===== BUTTON ===== */
-button{
-  margin-top:25px;
-  padding:12px 30px;
-  border:none;
-  border-radius:30px;
-  background:#ff4b7d;
-  color:white;
-  font-size:1rem;
-  cursor:pointer;
-  transition:0.3s;
-}
-
-button:hover{
-  background:#ff2e63;
-}
-
-/* ===== DOT NAV ===== */
-.dots{
-  position:fixed;
-  bottom:25px;
-  width:100%;
-  display:flex;
-  justify-content:center;
-  gap:12px;
-}
-
-.dot{
-  width:14px;
-  height:14px;
-  background:rgba(255,255,255,0.4);
-  border-radius:50%;
-  cursor:pointer;
-}
-
-.dot.active{
-  background:white;
-}
-</style>
+<link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
 <div class="slider" id="slider">
-
-  <div class="slide">
+  <div class="slide slide1">
     <div class="heart">💖</div>
-    <h1>Hey You</h1>
-    <p>I just wanted to say hi.</p>
+    <h1>Hey You!</h1>
+    <p>This page is made just for you 💌</p>
   </div>
 
-  <div class="slide">
+  <div class="slide slide2">
     <div class="heart">✨</div>
     <h1>You’re Special</h1>
-    <p>You make things better just by being you.</p>
+    <p>You make everything brighter just by being around.</p>
   </div>
 
-  <div class="slide">
+  <div class="slide slide3">
     <div class="heart">💫</div>
-    <h1>Just So You Know</h1>
-    <p>Someone smiles when they think of you.</p>
+    <h1>I Appreciate You</h1>
+    <p>Every little thing about you matters so much.</p>
   </div>
 
-  <div class="slide">
+  <div class="slide slide4">
     <div class="heart">💌</div>
-    <h1>This Is For You</h1>
-    <p>Thanks for existing.</p>
-    <button onclick="restart()">Replay 💕</button>
+    <h1>Just So You Know</h1>
+    <p>You made someone smile today — that’s me 😊</p>
+    <button onclick="goSlide(0)">Replay 💖</button>
   </div>
-
 </div>
 
+<!-- Navigation dots -->
 <div class="dots">
   <div class="dot active" onclick="goSlide(0)"></div>
   <div class="dot" onclick="goSlide(1)"></div>
@@ -142,32 +43,6 @@ button:hover{
   <div class="dot" onclick="goSlide(3)"></div>
 </div>
 
-<script>
-let current = 0;
-const slider = document.getElementById("slider");
-const dots = document.querySelectorAll(".dot");
-
-function goSlide(index){
-  current = index;
-  slider.style.transform = `translateX(-${index * 100}vw)`;
-  updateDots();
-}
-
-function updateDots(){
-  dots.forEach(dot => dot.classList.remove("active"));
-  dots[current].classList.add("active");
-}
-
-function restart(){
-  goSlide(0);
-}
-
-/* AUTO SLIDE */
-setInterval(()=>{
-  current = (current + 1) % 4;
-  goSlide(current);
-}, 5000);
-</script>
-
+<script src="script.js"></script>
 </body>
 </html>
