@@ -3,136 +3,64 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>💖 Ultimate Single Slide Crush Page</title>
-
-<!-- Background Music -->
-<audio id="bgMusic" autoplay loop>
-  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
-</audio>
-
-<style>
-/* RESET */
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif;}
-body{overflow:hidden;height:100vh;background:#111;color:white;cursor:none;position:relative;}
-
-/* SLIDE */
-.slide{width:100vw;height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:40px;position:relative; background:linear-gradient(135deg,#ff758f,#ff4b6c);}
-
-/* HEADINGS & TEXT */
-h1,h2,h3{margin-bottom:10px;}
-h1{font-size:3rem;text-shadow:0 0 10px #fff;}
-h2{font-size:2.2rem;text-shadow:0 0 5px #fff;}
-p{font-size:1.2rem;max-width:600px;margin-bottom:10px;}
-span{font-size:1rem;color:white;}
-.heart{font-size:3rem;animation:beat 1.5s infinite;margin-bottom:10px;}
-@keyframes beat{0%,100%{transform:scale(1);}50%{transform:scale(1.3);}}
-
-/* BUTTON */
-button{margin-top:15px;padding:12px 25px;border:none;border-radius:30px;background:#fff;color:#ff4b6c;font-weight:bold;cursor:pointer;transition:0.3s;}
-button:hover{transform:scale(1.1);background:#ff2e63;color:white;}
-
-/* FLOATING HEARTS */
-.floating{position:absolute;opacity:0.5;animation:float linear infinite;}
-@keyframes float{0%{transform:translateY(100vh);}100%{transform:translateY(-10vh);}}
-
-/* SPARKLES */
-.sparkle{position:absolute;width:5px;height:5px;background:#fff;border-radius:50%;pointer-events:none;opacity:0.8;animation:sparkleAnim 1s linear infinite;}
-@keyframes sparkleAnim{0%{transform:translate(0,0) scale(1);opacity:1;}100%{transform:translate(50px,-50px) scale(0);opacity:0;}}
-
-/* EXPLODING HEARTS */
-.explodingHeart{position:absolute;font-size:20px;pointer-events:none;animation:explode 1s forwards;}
-@keyframes explode{0%{transform:scale(0) translateY(0);opacity:1;}100%{transform:scale(1.5) translateY(-150px) rotate(360deg);opacity:0;}}
-
-/* TABLE */
-table{border-collapse:collapse;margin:15px 0;}
-table, th, td{border:1px solid #fff;padding:8px;}
-th{background:rgba(255,255,255,0.2);}
-td{background:rgba(255,255,255,0.1);}
-
-/* FORM */
-input, textarea{padding:8px;border-radius:5px;border:none;margin:5px;}
-input[type="text"], input[type="email"], textarea{width:250px;}
-
-/* DECORATIVE DIVS */
-.dec{width:20px;height:20px;border-radius:50%;position:absolute;opacity:0.3;}
-.dec1{background:#ff4b6c;top:50px;left:100px;}
-.dec2{background:#ffd1dc;top:200px;left:300px;}
-.dec3{background:#fbc2eb;top:400px;left:500px;}
-.dec4{background:#ff758f;top:150px;left:700px;}
-.dec5{background:#38ef7d;top:300px;left:900px;}
-</style>
+<title>Adventure Quest</title>
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-<!-- SINGLE SLIDE -->
-<div class="slide">
+<!-- Header -->
+<header>
+    <h1>Adventure Quest</h1>
+</header>
 
-<div class="heart">💖</div>
-<h1>Hello Sweetheart!</h1>
-<h2>Welcome to Your Ultimate Crush Page 💌</h2>
-<p><span>I made this page for you 😍</span></p>
-
-<ul>
-  <li>Fun times</li>
-  <li>Smiles</li>
-  <li>Laughs</li>
-  <li>Heartbeats 💓</li>
-</ul>
-
-<table>
-  <tr><th>Things I Like</th><th>Emoji</th></tr>
-  <tr><td>Your Smile</td><td>😊</td></tr>
-  <tr><td>Your Laugh</td><td>😂</td></tr>
-  <tr><td>Your Eyes</td><td>😍</td></tr>
-</table>
-
-<img src="https://i.ibb.co/5Tg2t0L/heart.png" alt="Heart">
-<a href="https://www.w3schools.com/html/" target="_blank">Learn HTML Together</a>
-
-<form>
-  <label>Name: <input type="text" placeholder="Your name"></label><br>
-  <label>Email: <input type="email" placeholder="Your email"></label><br>
-  <label>Message: <textarea placeholder="Leave a sweet note"></textarea></label><br>
-  <button id="loveBtn">Send 💌</button>
-</form>
-
-<div class="dec dec1"></div>
-<div class="dec dec2"></div>
-<div class="dec dec3"></div>
-<div class="dec dec4"></div>
-<div class="dec dec5"></div>
-
+<!-- Instructions and Score -->
+<div id="instructions">
+    <p>Explore the zones, defeat monsters, collect treasures, and level up!</p>
+    <p>Use Attack, Collect, Move Zone, and Power-Up buttons below.</p>
 </div>
 
-<script>
-// FLOATING HEARTS
-const colors=['#ff4b6c','#ff758f','#ffd1dc','#ff9a9e','#fbc2eb'];
-for(let i=0;i<100;i++){
-  const f=document.createElement('div'); f.className='floating'; f.innerText='💖';
-  f.style.left=Math.random()*100+'vw';
-  f.style.fontSize=(Math.random()*20+10)+'px';
-  f.style.color=colors[Math.floor(Math.random()*colors.length)];
-  f.style.animationDuration=(Math.random()*10+5)+'s';
-  f.style.animationDelay=(Math.random()*10)+'s';
-  document.body.appendChild(f);
-}
+<div id="scoreboard">
+    <div>HP: <span id="hp">100</span></div>
+    <div>Attack: <span id="attack">10</span></div>
+    <div>Score: <span id="score">0</span></div>
+    <div>Level: <span id="level">1</span></div>
+</div>
 
-// BUTTON EXPLODING HEARTS
-const btn=document.getElementById('loveBtn');
-btn.addEventListener('click', function(e){
-  e.preventDefault();
-  for(let i=0;i<30;i++){
-    const h=document.createElement('div');
-    h.className='explodingHeart';
-    h.style.left=(e.clientX+Math.random()*50-25)+'px';
-    h.style.top=(e.clientY+Math.random()*50-25)+'px';
-    h.style.color=colors[Math.floor(Math.random()*colors.length)];
-    h.innerText='💖';
-    document.body.appendChild(h);
-    setTimeout(()=>h.remove(),1200);
-  }
-});
-</script>
+<!-- Game Container -->
+<div id="game-container">
+    <div class="zone" id="forest"></div>
+    <div class="zone" id="cave"></div>
+    <div class="zone" id="castle"></div>
+</div>
 
+<!-- Action Buttons -->
+<div id="actions">
+    <button id="attackBtn">Attack</button>
+    <button id="collectBtn">Collect</button>
+    <button id="moveBtn">Move Zone</button>
+    <button id="powerBtn">Power-Up</button>
+</div>
+
+<!-- Inventory -->
+<div id="inventory">
+    <h3>Inventory:</h3>
+    <div class="inventory-item" id="treasure1">Treasure 1</div>
+    <div class="inventory-item" id="treasure2">Treasure 2</div>
+    <div class="inventory-item" id="treasure3">Treasure 3</div>
+    <div class="inventory-item" id="potion1">Potion 1</div>
+    <div class="inventory-item" id="potion2">Potion 2</div>
+    <div class="inventory-item" id="potion3">Potion 3</div>
+</div>
+
+<!-- Level-Up Message -->
+<div id="level-up">Level Up!</div>
+
+<!-- Game Events Log -->
+<div id="events">
+    <h3>Events Log:</h3>
+    <ul id="event-list"></ul>
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
